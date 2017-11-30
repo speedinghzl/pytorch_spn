@@ -1,6 +1,6 @@
 import torch
 from torch.autograd import Function
-from .._ext import gaterecurrent2d
+from .._ext import gaterecurrent2dnoind as gaterecurrent2d
 
 class GateRecurrent2dnoindFunction(Function):
     def __init__(self, horizontal_, reverse_):
@@ -16,7 +16,7 @@ class GateRecurrent2dnoindFunction(Function):
             return 0
         else:
             output = output.cuda()
-            gaterecurrent2d.GateRecurrent2dnoind_forward_cuda(self.horizontal,self.reverse, X, G1, G2, G3, output)
+            gaterecurrent2d.gaterecurrent2dnoind_forward_cuda(self.horizontal,self.reverse, X, G1, G2, G3, output)
 
             self.X = X
             self.G1 = G1
@@ -35,6 +35,6 @@ class GateRecurrent2dnoindFunction(Function):
         grad_G2 = torch.zeros(num, channels, height, width).cuda()
         grad_G3 = torch.zeros(num, channels, height, width).cuda()
 
-        gaterecurrent2d.GateRecurrent2dnoind_backward_cuda(self.horizontal, self.reverse, self.output, grad_output, self.X, self.G1, self.G2, self.G3, grad_X, grad_G1, grad_G2, grad_G3)
+        gaterecurrent2d.gaterecurrent2dnoind_backward_cuda(self.horizontal, self.reverse, self.output, grad_output, self.X, self.G1, self.G2, self.G3, grad_X, grad_G1, grad_G2, grad_G3)
 
         return grad_X, grad_G1, grad_G2, grad_G3
