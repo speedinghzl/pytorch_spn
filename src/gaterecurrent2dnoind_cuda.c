@@ -9,7 +9,7 @@
 // this symbol will be resolved automatically from PyTorch libs
 extern THCState *state;
 
-int gaterecurrent2dnoind_forward_cuda(_Bool horizontal_, _Bool reverse_, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * output)
+int gaterecurrent2dnoind_forward_cuda(int horizontal_, int reverse_, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * output)
 {
 	// Grab the input tensor to flat
 	float * X_data = THCudaTensor_data(state, X);
@@ -47,7 +47,7 @@ int gaterecurrent2dnoind_forward_cuda(_Bool horizontal_, _Bool reverse_, THCudaT
 	return 1;
 }
 
-int gaterecurrent2dnoind_backward_cuda(_Bool horizontal_, _Bool reverse_, THCudaTensor* top, THCudaTensor* top_grad, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * X_grad, THCudaTensor * G1_grad, THCudaTensor * G2_grad, THCudaTensor * G3_grad)
+int gaterecurrent2dnoind_backward_cuda(int horizontal_, int reverse_, THCudaTensor* top, THCudaTensor* top_grad, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * X_grad, THCudaTensor * G1_grad, THCudaTensor * G2_grad, THCudaTensor * G3_grad)
 {
 	//Grab the input tensor to flat
 	float * X_data = THCudaTensor_data(state, X);
