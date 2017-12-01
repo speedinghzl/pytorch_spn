@@ -3,7 +3,6 @@ extern "C" {
 #endif
 
 #include <stdio.h>
-#include <stdbool.h>
 #include <math.h>
 #include <float.h>
 #include "gaterecurrent2dnoind_kernel.h"
@@ -537,7 +536,7 @@ __global__ void backward_one_row_bottom_top(const int count, int T, int num,int 
 }
 
 
-int Forward_left_right(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, float * H, bool horizontal_, bool reverse_)
+int Forward_left_right(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, float * H, bool horizontal_, bool reverse_, cudaStream_t stream)
 {
   const int count = height_ * channels_ * num_;
   const int kThreadsPerBlock = 1024;
@@ -556,7 +555,7 @@ int Forward_left_right(int num_, int channels_, int height_, int width_, const f
   return 1;
 }
 
-int Forward_right_left(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, float * H, bool horizontal_, bool reverse_)
+int Forward_right_left(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, float * H, bool horizontal_, bool reverse_, cudaStream_t stream)
 {
   const int count = height_ * channels_ * num_;
   const int kThreadsPerBlock = 1024;
@@ -575,7 +574,7 @@ int Forward_right_left(int num_, int channels_, int height_, int width_, const f
   return 1;
 }
 
-int Forward_top_bottom(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, float * H, bool horizontal_, bool reverse_)
+int Forward_top_bottom(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, float * H, bool horizontal_, bool reverse_, cudaStream_t stream)
 {
   const int count = width_ * channels_ * num_;
   const int kThreadsPerBlock = 1024;
@@ -594,7 +593,7 @@ int Forward_top_bottom(int num_, int channels_, int height_, int width_, const f
   return 1;
 }
 
-int Forward_bottom_top(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, float * H, bool horizontal_, bool reverse_)
+int Forward_bottom_top(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, float * H, bool horizontal_, bool reverse_, cudaStream_t stream)
 {
   const int count = width_ * channels_ * num_;
   const int kThreadsPerBlock = 1024;
@@ -613,7 +612,7 @@ int Forward_bottom_top(int num_, int channels_, int height_, int width_, const f
   return 1;
 }
 
-int Backward_left_right(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, const float * H, float * X_diff, float * G1_diff, float * G2_diff, float * G3_diff, float * H_diff, bool horizontal_, bool reverse_)
+int Backward_left_right(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, const float * H, float * X_diff, float * G1_diff, float * G2_diff, float * G3_diff, float * H_diff, bool horizontal_, bool reverse_, cudaStream_t stream)
 {
   const int count =  height_ * channels_ * num_;
   const int kThreadsPerBlock = 1024;
@@ -633,7 +632,7 @@ int Backward_left_right(int num_, int channels_, int height_, int width_, const 
   return 1;
 }
 
-int Backward_right_left(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, const float * H, float * X_diff, float * G1_diff, float * G2_diff, float * G3_diff, float * H_diff, bool horizontal_, bool reverse_)
+int Backward_right_left(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, const float * H, float * X_diff, float * G1_diff, float * G2_diff, float * G3_diff, float * H_diff, bool horizontal_, bool reverse_, cudaStream_t stream)
 {
   const int count =  height_ * channels_ * num_;
   const int kThreadsPerBlock = 1024;
@@ -653,7 +652,7 @@ int Backward_right_left(int num_, int channels_, int height_, int width_, const 
   return 1;
 }
 
-int Backward_top_bottom(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, const float * H, float * X_diff, float * G1_diff, float * G2_diff, float * G3_diff, float * H_diff, bool horizontal_, bool reverse_)
+int Backward_top_bottom(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, const float * H, float * X_diff, float * G1_diff, float * G2_diff, float * G3_diff, float * H_diff, bool horizontal_, bool reverse_, cudaStream_t stream)
 {
   const int count =  width_ * channels_ * num_;
   const int kThreadsPerBlock = 1024;
@@ -673,7 +672,7 @@ int Backward_top_bottom(int num_, int channels_, int height_, int width_, const 
   return 1;
 }
 
-int Backward_bottom_top(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, const float * H, float * X_diff, float * G1_diff, float * G2_diff, float * G3_diff, float * H_diff, bool horizontal_, bool reverse_)
+int Backward_bottom_top(int num_, int channels_, int height_, int width_, const float * X, const float * G1, const float * G2, const float * G3, const float * H, float * X_diff, float * G1_diff, float * G2_diff, float * G3_diff, float * H_diff, bool horizontal_, bool reverse_, cudaStream_t stream)
 {
   const int count =  width_ * channels_ * num_;
   const int kThreadsPerBlock = 1024;
