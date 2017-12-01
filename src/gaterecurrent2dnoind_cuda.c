@@ -1,13 +1,16 @@
 // gaterecurrent2dnoind_cuda.c
 #include <THC/THC.h>
 #include <math.h>
-#include <stdbool.h>
 #include "gaterecurrent2dnoind_cuda.h"
 #include "cuda/gaterecurrent2dnoind_kernel.h"
+<<<<<<< HEAD
+=======
+// typedef bool boolean;
+>>>>>>> 4a25db47e3fdccf0c0853101b21554af02cb9d73
 // this symbol will be resolved automatically from PyTorch libs
 extern THCState *state;
 
-int gaterecurrent2dnoind_forward_cuda(bool horizontal_, bool reverse_, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * output)
+int gaterecurrent2dnoind_forward_cuda(_Bool horizontal_, _Bool reverse_, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * output)
 {
 	// Grab the input tensor to flat
 	float * X_data = THCudaTensor_data(state, X);
@@ -45,7 +48,7 @@ int gaterecurrent2dnoind_forward_cuda(bool horizontal_, bool reverse_, THCudaTen
 	return 1;
 }
 
-int gaterecurrent2dnoind_backward_cuda(bool horizontal_, bool reverse_, THCudaTensor* top, THCudaTensor* top_grad, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * X_diff, THCudaTensor * G1_diff, THCudaTensor * G2_diff, THCudaTensor * G3_diff)
+int gaterecurrent2dnoind_backward_cuda(_Bool horizontal_, _Bool reverse_, THCudaTensor* top, THCudaTensor* top_grad, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * X_diff, THCudaTensor * G1_diff, THCudaTensor * G2_diff, THCudaTensor * G3_diff)
 {
 	//Grab the input tensor to flat
 	float * X_data = THCudaTensor_data(state, X);
