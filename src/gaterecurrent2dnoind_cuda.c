@@ -1,10 +1,9 @@
 // gaterecurrent2dnoind_cuda.c
 #include <THC/THC.h>
 #include <math.h>
-#include <stdbool.h>
 #include "gaterecurrent2dnoind_cuda.h"
 #include "cuda/gaterecurrent2dnoind_kernel.h"
-typedef bool boolean;
+// typedef bool boolean;
 // this symbol will be resolved automatically from PyTorch libs
 extern THCState *state;
 

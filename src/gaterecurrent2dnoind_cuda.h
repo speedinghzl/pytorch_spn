@@ -1,3 +1,5 @@
+
+#include <stdbool.h>
 // gaterecurrent2dnoind_cuda.h
 int gaterecurrent2dnoind_forward_cuda(bool horizontal_, bool reverse_, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * output);
 
