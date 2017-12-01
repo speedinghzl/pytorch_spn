@@ -47,7 +47,7 @@ int gaterecurrent2dnoind_forward_cuda(_Bool horizontal_, _Bool reverse_, THCudaT
 	return 1;
 }
 
-int gaterecurrent2dnoind_backward_cuda(_Bool horizontal_, _Bool reverse_, THCudaTensor* top, THCudaTensor* top_grad, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * X_diff, THCudaTensor * G1_diff, THCudaTensor * G2_diff, THCudaTensor * G3_diff)
+int gaterecurrent2dnoind_backward_cuda(_Bool horizontal_, _Bool reverse_, THCudaTensor* top, THCudaTensor* top_grad, THCudaTensor * X, THCudaTensor * G1, THCudaTensor * G2, THCudaTensor * G3, THCudaTensor * X_grad, THCudaTensor * G1_grad, THCudaTensor * G2_grad, THCudaTensor * G3_grad)
 {
 	//Grab the input tensor to flat
 	float * X_data = THCudaTensor_data(state, X);
@@ -58,10 +58,10 @@ int gaterecurrent2dnoind_backward_cuda(_Bool horizontal_, _Bool reverse_, THCuda
 
 	float * H_diff = THCudaTensor_data(state, top_grad);
 
-	float * X_diff = THCudaTensor_data(state, X_diff);
-	float * G1_diff = THCudaTensor_data(state, G1_diff);
-	float * G2_diff = THCudaTensor_data(state, G2_diff);
-	float * G3_diff = THCudaTensor_data(state, G3_diff);
+	float * X_diff = THCudaTensor_data(state, X_grad);
+	float * G1_diff = THCudaTensor_data(state, G1_grad);
+	float * G2_diff = THCudaTensor_data(state, G2_grad);
+	float * G3_diff = THCudaTensor_data(state, G3_grad);
 
 	// dimensions
 	int num_ = THCudaTensor_size(state, X, 0);
