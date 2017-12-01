@@ -3,10 +3,9 @@
 #include <math.h>
 #include "gaterecurrent2dnoind_cuda.h"
 #include "cuda/gaterecurrent2dnoind_kernel.h"
-<<<<<<< HEAD
-=======
+
 // typedef bool boolean;
->>>>>>> 4a25db47e3fdccf0c0853101b21554af02cb9d73
+
 // this symbol will be resolved automatically from PyTorch libs
 extern THCState *state;
 
