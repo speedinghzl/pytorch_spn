@@ -3,6 +3,7 @@ extern "C" {
 #endif
 
 #include <stdio.h>
+#include <stdbool.h>
 #include <math.h>
 #include <float.h>
 #include "gaterecurrent2dnoind_kernel.h"

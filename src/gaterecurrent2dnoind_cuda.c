@@ -1,6 +1,7 @@
 // gaterecurrent2dnoind_cuda.c
 #include <THC/THC.h>
 #include <math.h>
+#include "gaterecurrent2dnoind_cuda.h"
 #include "cuda/gaterecurrent2dnoind_kernel.h"
 
 // this symbol will be resolved automatically from PyTorch libs
