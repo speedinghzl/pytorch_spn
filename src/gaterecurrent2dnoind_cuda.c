@@ -4,7 +4,6 @@
 #include <stdbool.h>
 #include "gaterecurrent2dnoind_cuda.h"
 #include "cuda/gaterecurrent2dnoind_kernel.h"
-typedef bool boolean;
 // this symbol will be resolved automatically from PyTorch libs
 extern THCState *state;
 
@@ -28,19 +27,19 @@ int gaterecurrent2dnoind_forward_cuda(bool horizontal_, bool reverse_, THCudaTen
 	if(horizontal_ && !reverse_) // left to right
 	{
 		//const int count = height_ * channels_ * num_;
-		Forward_left_right(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, horizontal_, reverse_);
+		Forward_left_right(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, horizontal_, reverse_, stream);
 	}
 	else if(horizontal_ && reverse_) // right to left
 	{
-		Forward_right_left(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, horizontal_, reverse_);
+		Forward_right_left(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, horizontal_, reverse_, stream);
 	}
 	else if(!horizontal_ && !reverse_) // top to bottom
 	{
-		Forward_top_bottom(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, horizontal_, reverse_);
+		Forward_top_bottom(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, horizontal_, reverse_, stream);
 	}
 	else
 	{
-		Forward_bottom_top(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, horizontal_, reverse_);
+		Forward_bottom_top(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, horizontal_, reverse_, stream);
 	}
 
 	return 1;
@@ -72,18 +71,18 @@ int gaterecurrent2dnoind_backward_cuda(bool horizontal_, bool reverse_, THCudaTe
 
 	if(horizontal_ && ! reverse_) //left to right
 	{
-		Backward_left_right(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, X_diff, G1_diff, G2_diff, G3_diff, H_diff, horizontal_, reverse_);
+		Backward_left_right(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, X_diff, G1_diff, G2_diff, G3_diff, H_diff, horizontal_, reverse_, stream);
 	}
 	else if(horizontal_ &&  reverse_) //right to left
 	{
-		Backward_right_left(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, X_diff, G1_diff, G2_diff, G3_diff, H_diff, horizontal_, reverse_);
+		Backward_right_left(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, X_diff, G1_diff, G2_diff, G3_diff, H_diff, horizontal_, reverse_, stream);
 	}
 	else if(!horizontal_ &&  !reverse_) //top to bottom
 	{
-		Backward_top_bottom(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, X_diff, G1_diff, G2_diff, G3_diff, H_diff, horizontal_, reverse_);
+		Backward_top_bottom(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, X_diff, G1_diff, G2_diff, G3_diff, H_diff, horizontal_, reverse_, stream);
 	}
 	else {
-		Backward_bottom_top(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, X_diff, G1_diff, G2_diff, G3_diff, H_diff, horizontal_, reverse_);
+		Backward_bottom_top(num_, channels_, height_, width_, X_data, G1_data, G2_data, G3_data, H_data, X_diff, G1_diff, G2_diff, G3_diff, H_diff, horizontal_, reverse_, stream);
 	}
 
 	return 1;
