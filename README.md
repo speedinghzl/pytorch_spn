@@ -1,2 +1,3 @@
 # pytorch_spn
-extension package for spatial propagation network in pytorch
+To build, install pytorch and run:
+sh make.sh
