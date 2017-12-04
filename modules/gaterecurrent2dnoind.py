@@ -1,10 +1,10 @@
-from torch.nn.modules.module import Module
+import torch.nn as nn
 from ..functions.gaterecurrent2dnoind import GateRecurrent2dnoindFunction
 
-class GateRecurrent2dnoind(Module):
+class GateRecurrent2dnoind(nn.Module):
     """docstring for ."""
     def __init__(self, horizontal_, reverse_):
-        super(GateRecurrent2dnoind, self).__init__()
+        super(GateRecurrent2dnoind, self）.__init__()
         self.horizontal = horizontal_
         self.reverse = reverse_
 
