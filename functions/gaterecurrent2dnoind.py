@@ -27,7 +27,7 @@ class GateRecurrent2dnoindFunction(Function):
             return output
 
     def backward(self, grad_output):
-        assert(self.hiddensize in not None and grad_output.is_cuda)
+        assert(self.hiddensize is not None and grad_output.is_cuda)
         num, channels, height, width = self.hiddensize
 
         grad_X = torch.zeros(num, channels, height, width).cuda()
