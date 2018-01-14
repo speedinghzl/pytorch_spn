@@ -6,4 +6,5 @@ $ sh make.sh
 See left_right_demo.py for usage:
 
 $ mv left_right_demo.py ../
+
 $ python left_right_demo.py
