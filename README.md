@@ -9,4 +9,4 @@ $ mv left_right_demo.py ../
 
 $ python left_right_demo.py
 
-The original codes (caffe) and models will be relesed [HERE](https://github.com/Liusifei/caffe-spn.git)
+The original codes (caffe) and models will be relesed [HERE](https://github.com/Liusifei/caffe-spn.git).
