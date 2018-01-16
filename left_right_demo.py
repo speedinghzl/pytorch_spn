@@ -4,7 +4,7 @@ X: any signal/feature map to be filtered
 G1~G3: three coefficient maps (e.g., left-top, left-center, left-bottom)
 
 Note:
-1. G1~G3 constitute the affinity, they can be a bounch of output maps coming from any CNN, with the input of any useful know information (e.g., RGB images)
+1. G1~G3 constitute the affinity, they can be a bounch of output maps coming from any CNN, with the input of any useful known information (e.g., RGB images)
 2. for any pixel i, |G1(i)| + |G2(i)| + |G3(i)| <= 1 is a sufficent condition for model stability (see paper)
 """
 import torch
