@@ -1,5 +1,12 @@
 """
 An example of left->right propagation
+
+Other direction settings:
+left->right: Propagator = GateRecurrent2dnoind(True,False)
+right->left: Propagator = GateRecurrent2dnoind(True,True)
+top->bottom: Propagator = GateRecurrent2dnoind(False,False)
+bottom->top: Propagator = GateRecurrent2dnoind(False,True)
+
 X: any signal/feature map to be filtered
 G1~G3: three coefficient maps (e.g., left-top, left-center, left-bottom)
 
